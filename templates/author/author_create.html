@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form ALIGN="center" action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    {{ form.name|as_crispy_field }}
+    {{ form.surname|as_crispy_field }}
+    {{ form.patronymic|as_crispy_field }}
+
+    <button type="Create" class="btn btn-success"><i class="fas fa-database"></i>Submit</button>
+</form>
+{% endblock content %}
