@@ -21,7 +21,7 @@ class Book(models.Model):
     name = models.CharField(blank=True, max_length=128)
     description = models.TextField(blank=True)
     count = models.IntegerField(default=10)
-    authors = models.ManyToManyField(Author, related_name='books')
+    authors = models.ManyToManyField(Author, related_name='books', blank=True)
 
     def __str__(self):
         """

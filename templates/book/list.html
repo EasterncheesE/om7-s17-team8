@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <br>
-        <h1>All Books</h1>
+        <h1>All Books <a href="{% url 'book_create' %}" class="btn btn-outline-primary">Create book</a></h1>
         <hr>
         <div class="row justify-content-center">
             {% for book in books %}

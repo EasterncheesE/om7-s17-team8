@@ -8,6 +8,7 @@
         <div class="col-md-5 p-lg-5 mx-auto my-5">
             <h1 class="display-4 fw-normal">{{ book.name }}</h1>
             <p class="lead fw-normal text-muted">{{ book.description }}</p>
+             <h8 class="display-4 fw-normal"><a href="{% url 'book_form' book.id %}" class="btn btn-outline-primary">Edit</a></h8>
         </div>
 
         <h3>Authors</h3>

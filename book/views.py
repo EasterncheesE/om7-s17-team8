@@ -1,7 +1,8 @@
 from django.views import generic
-
 from book.filters import BookFilter
-from book.models import Book
+from author.models import Author
+from django.shortcuts import render, redirect
+from book.forms import *
 
 
 class BookListView(generic.ListView):
@@ -54,3 +55,35 @@ class FilterBooksView(generic.TemplateView):
         context['filter'] = BookFilter(self.request.GET, queryset=Book.objects.all())
         print(context['filter'].form)
         return context
+
+
+def book_form(request, id=None):
+    if request.method == "GET":
+        if id:
+            book = Book.objects.get(pk=id)
+            form = BookForm(instance=book)
+            return render(request, "book/book_form.html", {'form': form})
+        else:
+            form = BookForm()
+            return render(request, "book/book_create.html", {'form': form})
+
+    elif request.method == "POST":
+        if "delete" in request.POST:
+            book = Book.objects.get(pk=id)
+            book.delete()
+            return redirect(f'/book/all')
+        if id:
+            book = Book.objects.get(pk=id)
+            form = BookForm(request.POST, instance=book)
+        else:
+            form = BookForm(request.POST)
+        if form.is_valid():
+            authors = Author.objects.all().filter(id__in=form.data['authors'])
+            book = form.save()
+            id = book.id
+        if id:
+            print("Totally id")
+            return redirect(f'/book/{book.id}')
+        else:
+            print("no id")
+            return redirect(f'/book/all')
