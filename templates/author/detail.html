@@ -3,10 +3,11 @@
 {% block title %}{{ author.name }} {{ author.surname }} {{ author.patronymic }}{% endblock %}
 
 {% block content %}
-
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 class="display-4 fw-normal">{{ author.name }} {{ author.surname }} {{ author.patronymic}}</h1>
+            <h5> Author information:</h5>
+            <h1 class="display-8 fw-normal">{{ author.name }} {{ author.surname }} {{ author.patronymic}}</h1>
+            <h8 class="display-4 fw-normal"><a href="{% url 'author_form' author.id %}" class="btn btn-outline-primary">Edit</a></h8>
         </div>
 
         <h3>Books</h3>
