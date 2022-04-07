@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form ALIGN="center" action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    {{ form.user|as_crispy_field }}
+    {{ form.book|as_crispy_field }}
+    {{ form.end_at|as_crispy_field }}
+    {{ form.plated_end_at|as_crispy_field }}
+    <br>
+    <button type="Submit" class="btn btn-success"><i class="fas fa-database"></i>Submit</button>
+    <button type="Submit" name="delete" class="btn btn-success"><i class="fas fa-database"></i>Delete</button>
+</form>
+{% endblock content %}

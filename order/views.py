@@ -2,8 +2,11 @@ from django.views import generic
 from django.db.models import F
 from order.models import Order
 from authentication.models import CustomUser
+from book.models import Book
 from datetime import datetime
+from django.shortcuts import render, redirect
 import pytz
+from .forms import *
 
 
 class OrderListView(generic.ListView):
@@ -37,3 +40,29 @@ class OrderDebtorsView(generic.ListView):
         debtors = Order.objects.filter(end_at=None).values_list("user_id", flat=True).filter(plated_end_at__gte=datetime.now(tz=pytz.UTC))
 
         return CustomUser.objects.all().filter(pk__in=late_returners|debtors).order_by("pk")
+
+
+def order_form(request, id=None):
+    if request.method == "GET":
+        if id:
+            order = Order.objects.get(pk=id)
+            form = OrderForm(instance=order)
+            return render(request, "order/order_form.html", {'form': form})
+        else:
+            form = OrderForm()
+            return render(request, "order/order_create.html", {'form': form})
+
+    elif request.method == "POST":
+        if "delete" in request.POST:
+            order = Order.objects.get(pk=id)
+            order.delete()
+            return redirect(f'/order/all')
+        if id:
+            order = Order.objects.get(pk=id)
+            form = OrderForm(request.POST, instance=order)
+        else:
+            form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            id = order.id
+        return redirect(f'/order/all')
