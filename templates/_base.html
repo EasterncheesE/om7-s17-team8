@@ -20,7 +20,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+                <li class="vav-item">
+                    {% url 'all_customusers' as all_users %}
+                    <a href="{{ all_users }}" class="nav-link {% if request.path == all_users %}active{% endif %}">
+                    Users
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,11 +71,6 @@
                             <a class="dropdown-item {% if request.path == debtors %}active{% endif %}"
                                href="{{ debtors }}">Debtors</a>
                         </li>
-                        <li>
-                            {% url 'sorted_orders' as sorted_orders %}
-                            <a class="dropdown-item {% if request.path == sorted_orders %}active{% endif %}"
-                               href="{{ sorted_orders }}">Sorted Orders</a>
-                        </li>
                     </ul>
                 </li>
 
@@ -80,8 +80,6 @@
                 Authors
                 </a>
             </li>
-
-
             </ul>
         </div>
     </div>

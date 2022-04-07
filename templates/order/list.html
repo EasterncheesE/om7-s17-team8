@@ -12,7 +12,7 @@ table, th, td {
 
     <div class="container">
         <br>
-        <h1>All orders</h1>
+        <h1>All Orders</h1>
         <hr>
         <div class="row justify-content-center">
             <table>
@@ -28,7 +28,7 @@ table, th, td {
                 {% for order in orders %}
                     <tr>
                         <td style="text-align:center">{{ order.id }}</td>
-                        <td><a href="{% url 'user_books' order.user.id %}" class="link-primary">{{ order.user.first_name }} {{ order.user.last_name }}</a></td>
+                        <td><a href="{% url 'customuser_detail' order.user.id %}" class="link-primary">{{ order.user.first_name }} {{ order.user.last_name }}</a></td>
                         <td><a href="{% url 'book_detail' order.book.id %}" class="link-primary">{{ order.book.name | truncatewords:5 }}</a></td>
                         <td>{{ order.created_at }}</td>
                         <td>{{ order.end_at }}</td>

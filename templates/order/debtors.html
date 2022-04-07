@@ -12,7 +12,7 @@
                 <div class="card col-md-3 m-2" style="width: 18rem;">
                     <div class="card-body">
                         <p class="card-title">id: {{ user.id }}  </p>
-                        <p class="card-text text-muted">User name: <a href="{% url 'user_books' user.id %}" class="primary">{{ user.first_name }} {{ user.last_name }}</a></p>
+                        <p class="card-text text-muted">User name: <a href="{% url 'customuser_detail' user.id %}" class="primary">{{ user.first_name }} {{ user.last_name }}</a></p>
                     </div>
                 </div>
 

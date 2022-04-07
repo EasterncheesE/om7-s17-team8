@@ -4,10 +4,14 @@
 {% block content %}
 <form ALIGN="center" action="" method="post" autocomplete="off">
     {% csrf_token %}
-    {{ form.name|as_crispy_field }}
-    {{ form.surname|as_crispy_field }}
-    {{ form.patronymic|as_crispy_field }}
-
+    {{ form.first_name|as_crispy_field }}
+    {{ form.last_name|as_crispy_field }}
+    {{ form.middle_name|as_crispy_field }}
+    {{ form.email|as_crispy_field }}
+    {{ form.password|as_crispy_field }}
+    {{ form.role|as_crispy_field }}
+    {{ form.is_active|as_crispy_field }}
+    <br>
     <button type="Submit" class="btn btn-success"><i class="fas fa-database"></i>Submit</button>
 </form>
 {% endblock content %}
