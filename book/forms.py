@@ -15,7 +15,4 @@ class BookForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BookForm, self).__init__(*args, **kwargs)
-        self.fields['name'].empty_label = "Book name"
-        self.fields['description'].empty_label = "Book description"
-        self.fields['count'].empty_label = 1
-        self.fields['count'].empty_label = 'Book author IDs'
+        self.fields['authors'].label_from_instance = lambda obj: f'{obj.name} {obj.surname}'
