@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block title %}All Users{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <br>
+        <h1>All Users <a href="{% url 'customuser_create' %}" class="btn btn-outline-primary">Create user</a></h1>
+
+        <hr>
+        <div class="row justify-content-center">
+            {% for user in users %}
+                <div class="card col-md-3 m-2" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }} </h5>
+                        <div class="card-text"> Created: {{ user.created_at }} </div>
+                        <a href="{% url 'customuser_detail' user.id %}" class="btn btn-outline-primary">See more</a>
+                        <a href="{% url 'customuser_form' user.id %}" class="btn btn-outline-primary">Edit</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

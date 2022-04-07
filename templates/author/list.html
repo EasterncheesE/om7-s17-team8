@@ -1,14 +1,8 @@
 {% extends '_base.html' %}
 
-{% block title %}All authors{% endblock %}
+{% block title %}All Authors{% endblock %}
 
 {% block content %}
-
-
-        <form class="row">
-            {{ form.name }} {{ form.surname }} {{ form.patronymic }}
-            <input type="submit" name="search" class="btn btn-default" value="Search">
-        </form>
     <div class="container">
         <br>
         <h1>All Authors <a href="{% url 'author_create' %}" class="btn btn-outline-primary">Create author</a></h1>

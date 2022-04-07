@@ -28,20 +28,6 @@ class SortedOrderView(generic.ListView):
         return queryset.reverse()
 
 
-class OrderUserBooksView(generic.DetailView):  # Використовуємо DetailView, бо він сам дістає юзера по pk
-    model = CustomUser
-    context_object_name = 'user'
-    template_name = 'order/user_books.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(OrderUserBooksView, self).get_context_data(**kwargs)
-        user = self.get_object()
-        books = set(map(lambda order: order.book, user.orders.all()))
-        context['books'] = books
-
-        return context
-
-
 class OrderDebtorsView(generic.ListView):
     context_object_name = 'users'
     template_name = 'order/debtors.html'
