@@ -82,8 +82,6 @@ def book_form(request, id=None):
             book = form.save()
             id = book.id
         if id:
-            print("Totally id")
             return redirect(f'/book/{book.id}')
         else:
-            print("no id")
             return redirect(f'/book/all')

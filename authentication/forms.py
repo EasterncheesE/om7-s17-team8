@@ -16,8 +16,10 @@ class CustomUserForm(forms.ModelForm):
             'is_active': "Is active"
         }
 
-    # def __init__(self, *args, **kwargs):
-    #     super(CustomUserForm, self).__init__(*args, **kwargs)
-    #     self.fields['first_name'].empty_label = "User first name"
-    #     self.fields['last_name'].empty_label = "User last name"
-    #     self.fields['email'].empty_label = 'User email'
+        
+    def __init__(self, *args, **kwargs):
+        super(CustomUserForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].empty_label = "User first name"
+        self.fields['last_name'].empty_label = "User last name"
+        self.fields['email'].empty_label = 'User email'
+
